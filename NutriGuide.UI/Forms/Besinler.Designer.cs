@@ -197,10 +197,13 @@
             // 
             // dgvDiyetYemekleri
             // 
+            dgvDiyetYemekleri.AllowUserToAddRows = false;
+            dgvDiyetYemekleri.AllowUserToDeleteRows = false;
             dgvDiyetYemekleri.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvDiyetYemekleri.Location = new Point(329, 12);
             dgvDiyetYemekleri.MultiSelect = false;
             dgvDiyetYemekleri.Name = "dgvDiyetYemekleri";
+            dgvDiyetYemekleri.ReadOnly = true;
             dgvDiyetYemekleri.RowTemplate.Height = 25;
             dgvDiyetYemekleri.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvDiyetYemekleri.Size = new Size(380, 118);

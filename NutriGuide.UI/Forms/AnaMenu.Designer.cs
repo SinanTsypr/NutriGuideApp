@@ -39,6 +39,7 @@
             label3 = new Label();
             panel1 = new Panel();
             label5 = new Label();
+            dtpTarih = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel1.SuspendLayout();
@@ -78,7 +79,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(167, 165);
+            label4.Location = new Point(138, 165);
             label4.Name = "label4";
             label4.Size = new Size(91, 18);
             label4.TabIndex = 4;
@@ -99,7 +100,7 @@
             lstTuketilenler.BackColor = SystemColors.Menu;
             lstTuketilenler.FormattingEnabled = true;
             lstTuketilenler.ItemHeight = 15;
-            lstTuketilenler.Location = new Point(264, 165);
+            lstTuketilenler.Location = new Point(255, 165);
             lstTuketilenler.Name = "lstTuketilenler";
             lstTuketilenler.Size = new Size(220, 109);
             lstTuketilenler.TabIndex = 6;
@@ -152,12 +153,22 @@
             label5.TabIndex = 11;
             label5.Text = "Alınan Kalori :";
             // 
+            // dtpTarih
+            // 
+            dtpTarih.Format = DateTimePickerFormat.Short;
+            dtpTarih.Location = new Point(140, 186);
+            dtpTarih.Name = "dtpTarih";
+            dtpTarih.Size = new Size(100, 23);
+            dtpTarih.TabIndex = 12;
+            dtpTarih.ValueChanged += dtpTarih_ValueChanged;
+            // 
             // AnaMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(219, 226, 239);
             ClientSize = new Size(566, 334);
+            Controls.Add(dtpTarih);
             Controls.Add(panel1);
             Controls.Add(lblAdSoyad);
             Controls.Add(lblKullaniciAd);
@@ -191,5 +202,6 @@
         private Label label3;
         private Panel panel1;
         private Label label5;
+        private DateTimePicker dtpTarih;
     }
 }

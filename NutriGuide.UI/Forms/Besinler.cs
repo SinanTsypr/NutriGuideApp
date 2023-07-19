@@ -17,7 +17,7 @@ namespace NutriGuide.UI.Forms
     public partial class Besinler : Form
     {
         Kullanici _kisi;
-        
+
 
 
         NutriGuideContext _db = new NutriGuideContext();
@@ -77,7 +77,40 @@ namespace NutriGuide.UI.Forms
 
         private void btnCikar_Click(object sender, EventArgs e)
         {
+            Diyetler d1 = _db.Diyetler.Find(((Diyetler)cmbDiyetler.SelectedItem).Id);
 
+            var sorgu = _db.Foods.Where(x => x.Diyetler.Any(s => s.Id == ((Diyetler)cmbDiyetler.SelectedItem).Id));
+            if (dgvDiyetYemekleri.SelectedRows.Count != 0)
+            {
+                if (sorgu.Contains((Food)dgvDiyetYemekleri.SelectedRows[0].DataBoundItem) == true)
+                {
+                    var selectedFood = (Food)dgvDiyetYemekleri.SelectedRows[0].DataBoundItem;
+                    var existingDiet = _db.Diyetler.Include(d => d.Foods).FirstOrDefault(d => d.Id == ((Diyetler)cmbDiyetler.SelectedItem).Id);
+
+                    if (existingDiet != null)
+                    {
+                        if (existingDiet.Foods.Contains(selectedFood))
+                        {
+                            existingDiet.Foods.Remove(selectedFood);
+                            _db.SaveChanges();
+                            MessageBox.Show("Seçili Yemek Silinmiştir");
+                            DiyetlereYemekEkle();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Seçili Yemek Bulunamamıştır");
+                            return;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Listeden Yemek Seçiniz");
+            }
+            
+
+            KaloriGuncelle();
         }
 
         public void Dongu()
@@ -92,7 +125,7 @@ namespace NutriGuide.UI.Forms
                 dgvDiyetYemekleri.DataSource = null;
                 dgvDiyetYemekleri.DataSource = _db.Foods.Where(x => x.Diyetler.Any(k => k.Kullanicilar.Any(s => s.KullaniciId == _kisi.KullaniciId)) && x.Diyetler.Any(k => k.DiyetAdi == ((Diyetler)cmbDiyetler.SelectedItem).DiyetAdi)).ToList();
             }
-            
+
         }
         public void DiyetYemekleriniListele()
         {

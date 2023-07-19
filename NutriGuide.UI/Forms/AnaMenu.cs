@@ -40,19 +40,18 @@ namespace NutriGuide.UI.Forms
         }
         void FoodEkle()
         {
-
+            lstTuketilenler.Items.Clear();
             lstTuketilenler.DisplayMember = "Ad";
             var KullaniciId = _kisi.KullaniciId;
             var Foods = _db.Foods.Where(x => x.Diyetler.Any(k => k.Kullanicilar.Any(s => s.KullaniciId == _kisi.KullaniciId)));
-
+            var Diyetler = _db.Diyetler.Where(x => x.Kullanicilar.Any(k => k.KullaniciId == _kisi.KullaniciId));
 
             foreach (var item in Foods)
             {
                 lstTuketilenler.Items.Add(item.Ad);
                 miktar += item.Kalorisi;
-
-
             }
+
             label3.Text = miktar.ToString();
 
         }
@@ -60,6 +59,19 @@ namespace NutriGuide.UI.Forms
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dtpTarih_ValueChanged(object sender, EventArgs e)
+        {
+            lstTuketilenler.Items.Clear();
+            var Diyetler = _db.Diyetler.Where(x => x.Kullanicilar.Any(k => k.KullaniciId == _kisi.KullaniciId));
+            foreach (var item in Diyetler)
+            {
+                if (item.DiyetBaslama >= dtpTarih.Value)
+                {
+                    lstTuketilenler.Items.Add($"{item.DiyetAdi} \t {item.DiyetBaslama} \t {item.DiyetBitis}");
+                }
+            }
         }
     }
 }
