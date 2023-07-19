@@ -186,6 +186,7 @@
             dgvYemekler.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvYemekler.Dock = DockStyle.Bottom;
             dgvYemekler.Location = new Point(0, 203);
+            dgvYemekler.MultiSelect = false;
             dgvYemekler.Name = "dgvYemekler";
             dgvYemekler.ReadOnly = true;
             dgvYemekler.RowHeadersVisible = false;
@@ -198,8 +199,10 @@
             // 
             dgvDiyetYemekleri.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvDiyetYemekleri.Location = new Point(329, 12);
+            dgvDiyetYemekleri.MultiSelect = false;
             dgvDiyetYemekleri.Name = "dgvDiyetYemekleri";
             dgvDiyetYemekleri.RowTemplate.Height = 25;
+            dgvDiyetYemekleri.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvDiyetYemekleri.Size = new Size(380, 118);
             dgvDiyetYemekleri.TabIndex = 16;
             // 

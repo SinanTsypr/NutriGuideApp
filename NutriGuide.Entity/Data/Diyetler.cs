@@ -11,6 +11,8 @@ namespace NutriGuide.Entity.Data
     {
         public int Id { get; set; }
         public string? DiyetAdi { get; set; }
+        public DateTime DiyetBaslama { get; set; }
+        public DateTime DiyetBitis { get; set; }
         public List<Kullanici> Kullanicilar { get; set; } = new();
         public List<Food> Foods { get; set; } = new();
 

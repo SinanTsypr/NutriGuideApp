@@ -37,6 +37,8 @@ namespace NutriGuide.UI.Forms
         {
             Diyetler d1 = new Diyetler();
             d1.DiyetAdi = txtDiyetIsmi.Text;
+            d1.DiyetBaslama = dtpBaslama.Value;
+            d1.DiyetBitis = dtpBitis.Value;
             _kisi.Diyetler.Add(d1);
             _db.Update(_kisi);
             _db.SaveChanges();
